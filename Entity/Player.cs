@@ -64,8 +64,15 @@ namespace RPG
       health += 10;
       mana += 10;
       strength += 5;
+      Console.Clear();
+      Console.WriteLine("You leveled up!");
+      Console.WriteLine("You are now level " + level);
+      Console.WriteLine("Up Health: " + health);
+      Console.WriteLine("Up Mana: " + mana);
+      Console.WriteLine("Up Strength: " + strength);
+      Console.Write("Press any key to continue...");
+      Console.ReadKey();
     }
-    // Private Methods
 
     // Getters and Setters
     public string Name

@@ -5,6 +5,7 @@ namespace RPG
   {
     public static bool Battle(int dice, Player player, Enemy enemy, bool isBattle)
     {
+      Console.Clear();
       if (dice == 20)
       {
         Console.WriteLine("You critical hit the enemy!");
@@ -48,6 +49,7 @@ namespace RPG
 
     public static bool Run(int dice, bool isBattle, Enemy enemy, Player player)
     {
+      Console.Clear();
       if (dice >= 10)
       {
         Console.WriteLine("You escaped!");

@@ -55,7 +55,7 @@ namespace RPG
           dungeon.Dungeon(player);
           Console.Clear();
           Console.WriteLine($"Progress: {(currentSize * 100) / sizeForDungeon}%");
-          Console.Write("Continue? (yes / no): ");
+          Console.Write("Continue? [y/n]: ");
           string option = Console.ReadLine()!;
           switch (option)
           {

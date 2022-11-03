@@ -72,7 +72,7 @@ namespace RPG
         Console.WriteLine();
         enemy.StatusCombat();
         Console.WriteLine();
-        Console.Write("Choose an option: ");
+        Console.Write("Choose your action: ");
         string option = Console.ReadLine()!;
 
         Console.WriteLine("Rolling the dice...\n");
@@ -83,7 +83,9 @@ namespace RPG
         {
           case "attack":
             Console.Clear();
-            Console.WriteLine("You are attacking...");
+            Console.WriteLine("You chosen attack...");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
             isBattle = Combat.Battle(dice, player!, enemy, isBattle);
             AttStatus(player);
             Console.Write("Press any key to continue...");
@@ -92,6 +94,8 @@ namespace RPG
           case "run":
             Console.Clear();
             Console.WriteLine("You are running...");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
             isBattle = Combat.Run(dice, isBattle, enemy, player!);
             AttStatus(player);
             Console.Write("Press any key to continue...");
