@@ -15,6 +15,7 @@ namespace RPG
     private int level;
     private int defense;
     private string classPlayer;
+    private Inventory inventory;
 
     // Constructor
     public Player(string name, string classPlayer)
@@ -28,6 +29,7 @@ namespace RPG
       this.experience = 0;
       this.level = 1;
       this.classPlayer = classPlayer;
+      this.inventory = new Inventory();
 
       if (classPlayer == "warrior")
       {
@@ -168,6 +170,16 @@ namespace RPG
     {
       get { return level; }
       set { level = value; }
+    }
+
+    public int Defense
+    {
+      get { return defense; }
+    }
+
+    public Inventory Inventory
+    {
+      get { return inventory; }
     }
   }
 }

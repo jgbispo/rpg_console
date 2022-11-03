@@ -12,10 +12,17 @@ namespace RPG
     {
       Console.Clear();
       Console.WriteLine("Inventory");
-      Console.WriteLine("Items: ");
-      for (int i = 0; i < items.Count; i++)
+      if (items.Count < 1)
       {
-        Console.WriteLine(i + 1 + " - " + items[i].GetName());
+        Console.WriteLine("Inventory is empty");
+      }
+      else
+      {
+        Console.WriteLine("Items: ");
+        for (int i = 0; i < items.Count; i++)
+        {
+          Console.WriteLine(i + " - " + items[i].GetName());
+        }
       }
     }
 

@@ -48,6 +48,11 @@ namespace RPG
           Console.Clear();
           GameControl.Dungeon(player!);
           break;
+        case "inventory":
+          Console.Clear();
+          InventoryControl.ShowInventory(player!);
+          InventoryMenu.ChooseOptionInventory(player!);
+          break;
         case "help":
           Console.Clear();
           Help();
@@ -68,6 +73,7 @@ namespace RPG
     {
       Console.WriteLine("status - Show your status");
       Console.WriteLine("dungeon - Enter the dungeon");
+      Console.WriteLine("inventory - Show your inventory");
       Console.WriteLine("help - Show the help menu");
       Console.WriteLine("exit - Exit the game");
       Console.Write("Press any key to continue...");
