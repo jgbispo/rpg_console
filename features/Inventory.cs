@@ -21,7 +21,7 @@ namespace RPG
         Console.WriteLine("Items: ");
         for (int i = 0; i < items.Count; i++)
         {
-          Console.WriteLine(i + " - " + items[i].GetName());
+          Console.WriteLine(i + 1 + " - " + items[i].GetName());
         }
       }
     }

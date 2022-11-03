@@ -15,6 +15,7 @@ namespace RPG
           Console.Clear();
           Console.Write("Take your name: ");
           string name = Console.ReadLine()!;
+          Console.WriteLine("Class options: warrior, mage, archer");
           Console.Write("Choose your class: ");
           string classPlayer = Console.ReadLine()!;
           Player player = new Player(name, classPlayer);
@@ -23,10 +24,12 @@ namespace RPG
         case "exit":
           Console.Clear();
           Console.WriteLine("Thanks for playing!");
+          Console.ReadKey();
           break;
         case "help":
           Console.Clear();
-          Console.WriteLine("Class options: warrior, mage, archer");
+          Console.WriteLine("start - Start the game");
+          Console.WriteLine("exit - Exit the game");
           Console.Write("Press any key to continue...");
           Console.ReadKey();
           Start();

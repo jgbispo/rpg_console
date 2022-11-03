@@ -4,10 +4,10 @@ namespace RPG
   {
     private string name;
     private int value;
-    private int rarity;
+    private string rarity;
     private string type;
 
-    public Item(string name, int value, int rarity, string type)
+    public Item(string name, int value, string rarity, string type)
     {
       this.name = name;
       this.value = value;
@@ -33,7 +33,7 @@ namespace RPG
       return value;
     }
 
-    public int GetRarity()
+    public string GetRarity()
     {
       return rarity;
     }
@@ -53,7 +53,7 @@ namespace RPG
       this.value = value;
     }
 
-    public void SetRarity(int rarity)
+    public void SetRarity(string rarity)
     {
       this.rarity = rarity;
     }
