@@ -58,14 +58,14 @@ namespace RPG
       this.health -= strength;
     }
 
-    // Private Methods
-    private void LevelUp()
+    public void LevelUp()
     {
       level++;
       health += 10;
       mana += 10;
       strength += 5;
     }
+    // Private Methods
 
     // Getters and Setters
     public string Name

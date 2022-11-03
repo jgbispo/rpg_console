@@ -35,23 +35,24 @@ namespace RPG
 
     private void MainMenu()
     {
-      Console.WriteLine("Main Menu");
-      Console.WriteLine("1 - Status");
-      Console.WriteLine("2 - Go to dungeon");
-      Console.WriteLine("3 - Exit");
+      Console.WriteLine("Zé's Tavern");
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
       switch (option)
       {
-        case "1":
+        case "status":
           Console.Clear();
           player!.Status();
           break;
-        case "2":
+        case "dungeon":
           Console.Clear();
           GameControl.Dungeon(player!);
           break;
-        case "3":
+        case "help":
+          Console.Clear();
+          Help();
+          break;
+        case "exit":
           Console.Clear();
           _gameOver = true;
           break;
@@ -61,7 +62,16 @@ namespace RPG
           MainMenu();
           break;
       }
+    }
 
+    private void Help()
+    {
+      Console.WriteLine("status - Show your status");
+      Console.WriteLine("dungeon - Enter the dungeon");
+      Console.WriteLine("help - Show the help menu");
+      Console.WriteLine("exit - Exit the game");
+      Console.Write("Press any key to continue...");
+      Console.ReadKey();
     }
   }
 }

@@ -7,20 +7,18 @@ namespace RPG
     {
       Console.Clear();
       Console.WriteLine("Welcome to the RPG Game!");
-      Console.WriteLine("1 - Start Game");
-      Console.WriteLine("2 - Exit Game");
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
       switch (option)
       {
-        case "1":
+        case "start":
           Console.Clear();
           Console.Write("Take your name: ");
           string name = Console.ReadLine()!;
           Player player = new Player(name);
           Game game = new Game(player);
           break;
-        case "2":
+        case "exit":
           Console.Clear();
           Console.WriteLine("Thanks for playing!");
           break;
@@ -79,5 +77,6 @@ namespace RPG
       }
     }
 
+    
   }
 }

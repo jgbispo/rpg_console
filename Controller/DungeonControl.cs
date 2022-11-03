@@ -40,7 +40,7 @@ namespace RPG
     {
       Console.Clear();
       Console.WriteLine("You are walking...");
-      Console.WriteLine("Press any key to continue...");
+      Console.Write("Press any key to continue...");
       Console.ReadKey();
     }
 
@@ -57,7 +57,7 @@ namespace RPG
       Console.WriteLine("You are fighting...");
       Enemy enemy = SpawnEnemies();
       enemy.ShowName();
-      Console.WriteLine("Press any key to continue...");
+      Console.Write("Press any key to continue...");
       Console.ReadKey();
       bool isBattle = true;
       Battle(isBattle, enemy);
@@ -119,10 +119,12 @@ namespace RPG
               player.Damage(enemy.Strength);
               Console.WriteLine("You got " + player.Health + " health!");
             }
+            AttStatus(player);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
           case "run":
+            Console.Clear();
             Console.WriteLine("You are running...");
             Console.WriteLine("Rolling the dice...");
             int diceRun = Dice();
@@ -143,7 +145,7 @@ namespace RPG
               Console.Write("Press any key to continue...");
               Console.ReadKey();
             }
-            Console.ReadKey();
+            AttStatus(player);
             break;
           default:
             Console.Clear();
@@ -176,6 +178,31 @@ namespace RPG
       }
       return enemies[0];
     }
+
+    private static void AttStatus(Player player)
+    {
+      if (player.Health <= 0)
+      {
+        Console.WriteLine("You are dead! GAME OVER!");
+        Console.Write("Press any key to continue...");
+        Console.ReadKey();
+        GameControl.Start();
+      }
+
+      if (player.Mana <= 0)
+      {
+        Console.WriteLine("You are out of mana!");
+        Console.Write("Press any key to continue...");
+        Console.ReadKey();
+        GameControl.Start();
+      }
+
+      if (player.Experience >= 100)
+      {
+        player.LevelUp();
+      }
+    }
+
 
     private void Loot()
     {
