@@ -5,22 +5,48 @@ namespace RPG
     // Proprieties
     private string name;
     private int health;
+    private int maxHealth;
     private int mana;
+    private int maxMana;
     private int strength;
+    private int magic;
     private int gold;
     private int experience;
     private int level;
+    private int defense;
+    private string classPlayer;
 
     // Constructor
-    public Player(string name)
+    public Player(string name, string classPlayer)
     {
       this.name = name;
-      health = 100;
-      mana = 100;
-      strength = 10;
-      gold = 0;
-      experience = 0;
-      level = 1;
+      this.health = 100;
+      this.maxHealth = 100;
+      this.mana = 100;
+      this.maxMana = 100;
+      this.gold = 0;
+      this.experience = 0;
+      this.level = 1;
+      this.classPlayer = classPlayer;
+
+      if (classPlayer == "warrior")
+      {
+        this.strength = 10;
+        this.magic = 5;
+        this.defense = 10;
+      }
+      else if (classPlayer == "mage")
+      {
+        this.strength = 5;
+        this.magic = 10;
+        this.defense = 5;
+      }
+      else
+      {
+        this.strength = 5;
+        this.magic = 5;
+        this.defense = 5;
+      }
     }
 
     // Public Methods
@@ -28,6 +54,7 @@ namespace RPG
     {
       Console.Clear();
       Console.WriteLine("Name: " + name);
+      Console.WriteLine("Class: " + classPlayer);
       Console.WriteLine("Health: " + health);
       Console.WriteLine("Mana: " + mana);
       Console.WriteLine("Strength: " + strength);
@@ -58,18 +85,25 @@ namespace RPG
       this.health -= strength;
     }
 
+    public void Staff(int magic)
+    {
+      this.health -= magic;
+    }
+
     public void LevelUp()
     {
       level++;
-      health += 10;
-      mana += 10;
+      maxHealth += 10;
+      maxMana += 10;
       strength += 5;
+      magic += 5;
       Console.Clear();
       Console.WriteLine("You leveled up!");
       Console.WriteLine("You are now level " + level);
       Console.WriteLine("Up Health: " + health);
       Console.WriteLine("Up Mana: " + mana);
       Console.WriteLine("Up Strength: " + strength);
+      Console.WriteLine("Up Magic: " + magic);
       Console.Write("Press any key to continue...");
       Console.ReadKey();
     }
@@ -87,15 +121,35 @@ namespace RPG
       set { health = value; }
     }
 
+    public int MaxHealth
+    {
+      get { return maxHealth; }
+    }
+
     public int Mana
     {
       get { return mana; }
       set { mana = value; }
     }
 
+    public int MaxMana
+    {
+      get { return maxMana; }
+    }
+
     public int Strength
     {
       get { return strength; }
+    }
+
+    public int Magic
+    {
+      get { return magic; }
+    }
+
+    public string ClassPlayer
+    {
+      get { return ClassPlayer; }
     }
 
     public int Gold

@@ -81,12 +81,22 @@ namespace RPG
 
         switch (option)
         {
-          case "attack":
+          case "sword":
             Console.Clear();
-            Console.WriteLine("You chosen attack...");
+            Console.WriteLine("You chosen sword...");
             Console.Write("Press any key to continue...");
             Console.ReadKey();
-            isBattle = Combat.Battle(dice, player!, enemy, isBattle);
+            isBattle = Combat.Battle(dice, player!, option, enemy, isBattle);
+            AttStatus(player);
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            break;
+          case "magic":
+            Console.Clear();
+            Console.WriteLine("You chosen magic...");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            isBattle = Combat.Battle(dice, player!, option, enemy, isBattle);
             AttStatus(player);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
@@ -97,6 +107,26 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.Run(dice, isBattle, enemy, player!);
+            AttStatus(player);
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            break;
+          case "potion mana":
+            Console.Clear();
+            Console.WriteLine("You are using an item...");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            isBattle = Combat.UsePotionMana(dice, isBattle, enemy, player!);
+            AttStatus(player);
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            break;
+          case "potion health":
+            Console.Clear();
+            Console.WriteLine("You are using an item...");
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            isBattle = Combat.UsePotionHealth(dice, isBattle, enemy, player!);
             AttStatus(player);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
