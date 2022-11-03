@@ -74,51 +74,17 @@ namespace RPG
         Console.WriteLine();
         Console.Write("Choose an option: ");
         string option = Console.ReadLine()!;
+
+        Console.WriteLine("Rolling the dice...\n");
+        int dice = Dice();
+        Console.WriteLine("You rolled a " + dice + "!\n");
+
         switch (option)
         {
           case "attack":
             Console.Clear();
             Console.WriteLine("You are attacking...");
-            Console.WriteLine("Rolling the dice...\n");
-            int dice = Dice();
-            Console.WriteLine("You rolled a " + dice + "!\n");
-
-            if (dice == 20)
-            {
-              Console.WriteLine("You critical hit the enemy!");
-              Console.WriteLine("You did " + player!.Strength * 2 + " damage!");
-              if (enemy.Damage(player.Strength * 2))
-              {
-                player.Gold += enemy.DropGold();
-                player.Experience += enemy.DropXP();
-                isBattle = !isBattle;
-              }
-            }
-            else if (dice <= 3)
-            {
-              Console.WriteLine("You missed!");
-              Console.WriteLine("You critical took " + enemy.Strength * 2 + " damage!");
-              player.Damage(enemy.Strength * 2);
-              Console.WriteLine("You got " + player.Health + " health!");
-            }
-            else if (dice >= 10)
-            {
-              Console.WriteLine("You hit the enemy!");
-              Console.WriteLine("You did " + player!.Strength + " damage!");
-              if (enemy.Damage(player.Strength))
-              {
-                player.Gold += enemy.DropGold();
-                player.Experience += enemy.DropXP();
-                isBattle = !isBattle;
-              }
-            }
-            else
-            {
-              Console.WriteLine("You missed!");
-              Console.WriteLine("You took " + enemy.Strength + " damage!");
-              player.Damage(enemy.Strength);
-              Console.WriteLine("You got " + player.Health + " health!");
-            }
+            isBattle = Combat.Battle(dice, player!, enemy, isBattle);
             AttStatus(player);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
@@ -126,26 +92,10 @@ namespace RPG
           case "run":
             Console.Clear();
             Console.WriteLine("You are running...");
-            Console.WriteLine("Rolling the dice...");
-            int diceRun = Dice();
-            Console.WriteLine("You rolled a " + diceRun + "!\n");
-            if (diceRun >= 10)
-            {
-              Console.WriteLine("You escaped!");
-              isBattle = !isBattle;
-              Console.Write("Press any key to continue...");
-              Console.ReadKey();
-            }
-            else
-            {
-              Console.WriteLine("You couldn't escape!");
-              Console.WriteLine("it took " + enemy.Strength + " damage!");
-              player.Damage(enemy.Strength);
-              Console.WriteLine("You got " + player.Health + " health!");
-              Console.Write("Press any key to continue...");
-              Console.ReadKey();
-            }
+            isBattle = Combat.Run(dice, isBattle, enemy, player!);
             AttStatus(player);
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
             break;
           default:
             Console.Clear();
