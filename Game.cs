@@ -53,6 +53,10 @@ namespace RPG
           InventoryControl.ShowInventory(player!);
           InventoryMenu.ChooseOptionInventory(player!);
           break;
+        case "shop":
+          Console.Clear();
+          Shop shop = new Shop(player!);
+          break;
         case "help":
           Console.Clear();
           Help();
