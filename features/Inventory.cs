@@ -25,7 +25,7 @@ namespace RPG
         Console.WriteLine("Items: ");
         for (int i = 0; i < items.Count; i++)
         {
-          Console.WriteLine(i + 1 + " - " + items[i].GetName());
+          Console.WriteLine(i + 1 + " - " + items[i].Name);
         }
       }
     }
@@ -57,9 +57,15 @@ namespace RPG
       return items[index];
     }
 
-    public int GetSize()
+    public List<Item> Items
     {
-      return items.Count;
+      get { return items; }
+    }
+
+    public int MaxItems
+    {
+      get { return maxItems; }
+      set { maxItems = value; }
     }
   }
 }

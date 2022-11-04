@@ -14,9 +14,12 @@ namespace RPG
     private int experience;
     private int level;
     private int defense;
+    private int speed;
     private string classPlayer;
     private int maxItems = 10;
     private Inventory inventory;
+
+    private int valueItemEquip;
 
     // Constructor
     public Player(string name, string classPlayer)
@@ -31,24 +34,37 @@ namespace RPG
       this.level = 1;
       this.classPlayer = classPlayer;
       this.inventory = new Inventory(maxItems);
+      inventory.AddItem(new Item("sword", 10, "common", "weapon"));
+      inventory.GetItem(0).IsEquipped = true;
 
       if (classPlayer == "warrior")
       {
         this.strength = 10;
         this.magic = 5;
         this.defense = 10;
+        this.speed = 5;
       }
       else if (classPlayer == "mage")
       {
         this.strength = 5;
         this.magic = 10;
         this.defense = 5;
+        this.speed = 8;
       }
       else
       {
         this.strength = 5;
         this.magic = 5;
         this.defense = 5;
+        this.speed = 10;
+      }
+
+      foreach (Item item in inventory.Items)
+      {
+        if (item.IsEquipped)
+        {
+          valueItemEquip += item.Value;
+        }
       }
     }
 
@@ -132,6 +148,18 @@ namespace RPG
     {
       set { maxItems = value; }
       get { return maxItems; }
+    }
+
+    public int Speed
+    {
+      set { speed = value; }
+      get { return speed; }
+    }
+
+    public int ValueItemEquip
+    {
+      set { valueItemEquip = value; }
+      get { return valueItemEquip; }
     }
   }
 }

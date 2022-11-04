@@ -19,14 +19,14 @@ namespace RPG
       items = Items.CreateItem(items!);
       for (int i = 0; i < items.Length; i++)
       {
-        prices.Add(items[i].GetValue() * 10);
+        prices.Add(items[i].Value * 10);
       }
       for (int i = 0; i < 5; i++)
       {
         Random random = new Random();
         int index = random.Next(0, items!.Length);
         Console.WriteLine();
-        itemToSold.Add(i + 1 + " - " + items[index].GetName() + " - " + prices[index] + " golds" + " - " + items[index].GetRarity());
+        itemToSold.Add(i + 1 + " - " + items[index].Name + " - " + prices[index] + " golds" + " - " + items[index].Rarity);
       }
       ShopMenu();
     }
@@ -106,7 +106,7 @@ namespace RPG
       Console.WriteLine("Items: ");
       for (int i = 0; i < InventoryControl.GetSize(player!); i++)
       {
-        Console.WriteLine(i + 1 + " - " + InventoryControl.GetItem(player!, i).GetName());
+        Console.WriteLine(i + 1 + " - " + InventoryControl.GetItem(player!, i).Name);
       }
       Console.Write("Choose an item to sell: ");
       int option = int.Parse(Console.ReadLine()!);
@@ -115,13 +115,13 @@ namespace RPG
 
     public void SellItem(int index)
     {
-      Console.WriteLine("Are you sure you want to sell " + InventoryControl.GetItem(player!, index).GetName() + "?");
+      Console.WriteLine("Are you sure you want to sell " + InventoryControl.GetItem(player!, index).Name + "?");
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
       switch (option)
       {
         case "yes":
-          player!.Gold = player.Gold + (InventoryControl.GetItem(player, index).GetValue() * 10);
+          player!.Gold = player.Gold + (InventoryControl.GetItem(player, index).Value * 10);
           InventoryControl.RemoveItem(player, index);
           Console.Clear();
           Console.WriteLine("Item sold");

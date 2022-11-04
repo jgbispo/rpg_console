@@ -207,7 +207,7 @@ namespace RPG
       Console.ReadKey();
       Console.Clear();
       Item item = FoundItem();
-      Console.WriteLine("You found a " + item.GetName() + "!");
+      Console.WriteLine("You found a " + item.Name + "!");
       Console.Write("Press any key to continue...");
       InventoryControl.AddItem(player!, item);
       Console.ReadKey();
