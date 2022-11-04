@@ -5,10 +5,13 @@ namespace RPG
     // propriedade
     private bool _gameOver = false;
     private Player? player;
+    private bool isTutorial;
+    private bool isTutorialMenu = false;
 
-    public Game(Player player)
+    public Game(Player player, bool isTutorial)
     {
       this.player = player;
+      this.isTutorial = isTutorial;
       Start();
     }
 
@@ -35,6 +38,7 @@ namespace RPG
 
     private void MainMenu()
     {
+      if (isTutorial && !isTutorialMenu) { Tutorial.Menu(); isTutorialMenu = true; }
       Console.WriteLine("Zé's Tavern");
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
@@ -42,20 +46,20 @@ namespace RPG
       {
         case "status":
           Console.Clear();
-          player!.Status();
+          player!.Status(isTutorial);
           break;
         case "dungeon":
           Console.Clear();
-          GameControl.Dungeon(player!);
+          GameControl.Dungeon(player!, isTutorial);
           break;
         case "inventory":
           Console.Clear();
-          InventoryControl.ShowInventory(player!);
+          InventoryControl.ShowInventory(player!, isTutorial);
           InventoryMenu.ChooseOptionInventory(player!);
           break;
         case "shop":
           Console.Clear();
-          Shop shop = new Shop(player!);
+          Shop shop = new Shop(player!, isTutorial);
           break;
         case "help":
           Console.Clear();

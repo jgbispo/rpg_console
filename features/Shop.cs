@@ -6,11 +6,13 @@ namespace RPG
     private List<int> prices = new List<int>();
     private List<string> itemToSold = new List<string>();
     private Player? player;
+    private bool isTutorialShop = false;
 
-    public Shop(Player player)
+    public Shop(Player player, bool isTutorial)
     {
       Console.WriteLine("Welcome to the shop!");
       Console.WriteLine("Items renew each time they come to the shop, so enjoy!");
+      if (isTutorial && !isTutorialShop) { Tutorial.Shop(); isTutorialShop = true; }
       Console.Write("Press any key to continue...");
       Console.ReadKey();
       this.player = player;

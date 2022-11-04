@@ -2,24 +2,32 @@ namespace RPG
 {
   class GameControl
   {
+    private static bool isTutorialDungeon = false;
 
     public static void Start()
     {
       Console.Clear();
+      bool isTutorial = false;
       Console.WriteLine("Welcome to the RPG Game!");
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
+      if (option == "tutorial")
+      {
+        isTutorial = true;
+        option = "start";
+      }
       switch (option)
       {
         case "start":
           Console.Clear();
+          if (isTutorial) { Tutorial.Welcome(); }
           Console.Write("Take your name: ");
           string name = Console.ReadLine()!;
           Console.WriteLine("Class options: warrior, mage, archer");
           Console.Write("Choose your class: ");
           string classPlayer = Console.ReadLine()!;
           Player player = new Player(name, classPlayer);
-          Game game = new Game(player);
+          Game game = new Game(player, isTutorial);
           break;
         case "exit":
           Console.Clear();
@@ -29,6 +37,7 @@ namespace RPG
         case "help":
           Console.Clear();
           Console.WriteLine("start - Start the game");
+          Console.WriteLine("tutorial - Start the tutorial");
           Console.WriteLine("exit - Exit the game");
           Console.Write("Press any key to continue...");
           Console.ReadKey();
@@ -42,13 +51,15 @@ namespace RPG
       }
     }
 
-    public static void Dungeon(Player player)
+    public static void Dungeon(Player player, bool isTutorial)
     {
-      Console.Clear();
-      Console.WriteLine("You are in the dungeon!");
       Random random = new Random();
       DungeonControl dungeon = new DungeonControl();
 
+      Console.Clear();
+      Console.WriteLine("You are in the dungeon!");
+
+      if (isTutorial && !isTutorialDungeon) { Tutorial.Dungeon(); isTutorialDungeon = true; }
       bool isDungeon = true;
       int sizeForDungeon = random.Next(5, 20);
       int currentSize = 0;

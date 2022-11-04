@@ -11,6 +11,7 @@ You are a traveler who has just arrived in the new world and your goal is to imp
 ### Home screen
 
 - start: Starts the game
+- tutorial: Start game with tutorial
 - exit: Return to the previous menu / end the game
 
 ### combat (All actions are rolling a D20 or a D2)

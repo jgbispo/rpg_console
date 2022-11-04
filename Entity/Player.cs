@@ -16,6 +16,7 @@ namespace RPG
     private int defense;
     private string classPlayer;
     private Inventory inventory;
+    private bool isTutorialStatus = false;
 
     // Constructor
     public Player(string name, string classPlayer)
@@ -52,9 +53,10 @@ namespace RPG
     }
 
     // Public Methods
-    public void Status()
+    public void Status(bool isTutorial)
     {
       Console.Clear();
+      if (isTutorial && !isTutorialStatus) { Tutorial.Status(); isTutorialStatus = true; }
       Console.WriteLine("Name: " + name);
       Console.WriteLine("Class: " + classPlayer);
       Console.WriteLine("Health: " + health);
