@@ -79,7 +79,7 @@ namespace RPG
       while (isBattle)
       {
         Console.Clear();
-        player!.StatusCombat();
+        PlayerControl.StatusCombat(player!);
         Console.WriteLine();
         enemy.StatusCombat();
         Console.WriteLine();
@@ -98,7 +98,7 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.Battle(dice, player!, option, enemy, isBattle);
-            AttStatus(player);
+            AttStatus(player!);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
@@ -108,7 +108,7 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.Battle(dice, player!, option, enemy, isBattle);
-            AttStatus(player);
+            AttStatus(player!);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
@@ -118,7 +118,7 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.Run(dice, isBattle, enemy, player!);
-            AttStatus(player);
+            AttStatus(player!);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
@@ -128,7 +128,7 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.UsePotionMana(dice, isBattle, enemy, player!);
-            AttStatus(player);
+            AttStatus(player!);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
@@ -138,7 +138,7 @@ namespace RPG
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             isBattle = Combat.UsePotionHealth(dice, isBattle, enemy, player!);
-            AttStatus(player);
+            AttStatus(player!);
             Console.Write("Press any key to continue...");
             Console.ReadKey();
             break;
@@ -195,7 +195,7 @@ namespace RPG
 
       if (player.Experience >= 100)
       {
-        player.LevelUp();
+        PlayerControl.LevelUp(player);
       }
     }
 

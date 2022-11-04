@@ -34,7 +34,7 @@ namespace RPG
     private void End()
     {
       Console.WriteLine("Goodbye!");
-      return; 
+      return;
     }
 
     private void MainMenu()
@@ -47,20 +47,20 @@ namespace RPG
       {
         case "status":
           Console.Clear();
-          player!.Status(isTutorial);
+          PlayerControl.Status(isTutorial, this.player!);
           break;
         case "dungeon":
           Console.Clear();
-          GameControl.Dungeon(player!, isTutorial);
+          GameControl.Dungeon(this.player!, isTutorial);
           break;
         case "inventory":
           Console.Clear();
-          InventoryControl.ShowInventory(player!, isTutorial);
-          InventoryMenu.ChooseOptionInventory(player!);
+          InventoryControl.ShowInventory(this.player!, isTutorial);
+          InventoryMenu.ChooseOptionInventory(this.player!);
           break;
         case "shop":
           Console.Clear();
-          Shop shop = new Shop(player!, isTutorial);
+          Shop shop = new Shop(this.player!, isTutorial);
           break;
         case "help":
           Console.Clear();

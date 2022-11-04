@@ -37,7 +37,7 @@ namespace RPG
       {
         Console.WriteLine("You missed!");
         Console.WriteLine("You critical took " + enemy.Strength * 2 + " damage!");
-        player.Damage(enemy.Strength * 2);
+        PlayerControl.Damage(enemy.Strength * 2, player);
         Console.WriteLine("You got " + player.Health + " health!");
       }
       else if (dice >= 10)
@@ -56,7 +56,7 @@ namespace RPG
       {
         Console.WriteLine("You missed!");
         Console.WriteLine("You took " + enemy.Strength + " damage!");
-        player.Damage(enemy.Strength);
+        PlayerControl.Damage(enemy.Strength, player);
         Console.WriteLine("You got " + player.Health + " health!");
       }
       return isBattle;
@@ -75,7 +75,7 @@ namespace RPG
       {
         Console.WriteLine("You couldn't escape!");
         Console.WriteLine("You took " + enemy.Strength + " damage!");
-        player.Damage(enemy.Strength);
+        PlayerControl.Damage(enemy.Strength, player);
         Console.WriteLine("You got " + player.Health + " health!");
       }
       return isBattle;
@@ -106,7 +106,7 @@ namespace RPG
       {
         Console.WriteLine("You couldn't use a potion!");
         Console.WriteLine("You took " + enemy.Strength + " damage!");
-        player.Damage(enemy.Strength);
+        PlayerControl.Damage(enemy.Strength, player);
         Console.WriteLine("You got " + player.Health + " health!");
       }
       return isBattle;
@@ -138,7 +138,7 @@ namespace RPG
       {
         Console.WriteLine("You couldn't use a potion!");
         Console.WriteLine("You took " + enemy.Strength + " damage!");
-        player.Damage(enemy.Strength);
+        PlayerControl.Damage(enemy.Strength, player);
         Console.WriteLine("You got " + player.Mana + " mana!");
       }
       return isBattle;

@@ -15,12 +15,14 @@ namespace RPG
       this.type = type;
     }
 
-    public void ShowStats()
+    public void ShowStatus()
     {
       Console.WriteLine("Name: " + name);
       Console.WriteLine("Value: " + value);
       Console.WriteLine("Rarity: " + rarity);
       Console.WriteLine("Type: " + type);
+      Console.Write("Press any key to continue...");
+      Console.ReadKey();
     }
 
     public string GetName()

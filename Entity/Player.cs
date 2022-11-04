@@ -15,8 +15,8 @@ namespace RPG
     private int level;
     private int defense;
     private string classPlayer;
+    private int maxItems = 10;
     private Inventory inventory;
-    private bool isTutorialStatus = false;
 
     // Constructor
     public Player(string name, string classPlayer)
@@ -30,7 +30,7 @@ namespace RPG
       this.experience = 0;
       this.level = 1;
       this.classPlayer = classPlayer;
-      this.inventory = new Inventory();
+      this.inventory = new Inventory(maxItems);
 
       if (classPlayer == "warrior")
       {
@@ -52,66 +52,6 @@ namespace RPG
       }
     }
 
-    // Public Methods
-    public void Status(bool isTutorial)
-    {
-      Console.Clear();
-      if (isTutorial && !isTutorialStatus) { Tutorial.Status(); isTutorialStatus = true; }
-      Console.WriteLine("Name: " + name);
-      Console.WriteLine("Class: " + classPlayer);
-      Console.WriteLine("Health: " + health);
-      Console.WriteLine("Mana: " + mana);
-      Console.WriteLine("Strength: " + strength);
-      Console.WriteLine("Gold: " + gold);
-      Console.WriteLine("Experience: " + experience);
-      Console.WriteLine("Level: " + level);
-      Console.Write("Press any key to continue...");
-      Console.ReadKey();
-    }
-
-    public void StatusCombat()
-    {
-      Console.Clear();
-      Console.WriteLine("Name: " + name);
-      Console.WriteLine("Health: " + health);
-    }
-
-    public void ShowInventory()
-    {
-      Console.Clear();
-      Console.WriteLine("Inventory");
-      Console.Write("Press any key to continue...");
-      Console.ReadKey();
-    }
-
-    public void Damage(int strength)
-    {
-      this.health -= strength;
-    }
-
-    public void Staff(int magic)
-    {
-      this.health -= magic;
-    }
-
-    public void LevelUp()
-    {
-      level++;
-      maxHealth += 10;
-      maxMana += 10;
-      strength += 5;
-      magic += 5;
-      Console.Clear();
-      Console.WriteLine("You leveled up!");
-      Console.WriteLine("You are now level " + level);
-      Console.WriteLine("Up Health: " + health);
-      Console.WriteLine("Up Mana: " + mana);
-      Console.WriteLine("Up Strength: " + strength);
-      Console.WriteLine("Up Magic: " + magic);
-      Console.Write("Press any key to continue...");
-      Console.ReadKey();
-    }
-
     // Getters and Setters
     public string Name
     {
@@ -127,6 +67,7 @@ namespace RPG
 
     public int MaxHealth
     {
+      set { maxHealth = value; }
       get { return maxHealth; }
     }
 
@@ -138,22 +79,25 @@ namespace RPG
 
     public int MaxMana
     {
+      set { maxMana = value; }
       get { return maxMana; }
     }
 
     public int Strength
     {
+      set { strength = value; }
       get { return strength; }
     }
 
     public int Magic
     {
+      set { magic = value; }
       get { return magic; }
     }
 
     public string ClassPlayer
     {
-      get { return ClassPlayer; }
+      get { return classPlayer; }
     }
 
     public int Gold
@@ -182,6 +126,12 @@ namespace RPG
     public Inventory Inventory
     {
       get { return inventory; }
+    }
+
+    public int MaxItem
+    {
+      set { maxItems = value; }
+      get { return maxItems; }
     }
   }
 }
