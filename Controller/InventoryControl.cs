@@ -2,16 +2,18 @@ namespace RPG
 {
   class InventoryControl
   {
+    private static bool isTutorialInventory = false;
     public static void ShowInventory(Player player, bool isTutorial)
     {
-      if (isTutorial) { Tutorial.Inventory(); }
+      Console.Clear();
+      if (isTutorial && !isTutorialInventory) { Tutorial.Inventory(); isTutorialInventory = true; }
       Inventory inventory = player.Inventory;
       inventory.ShowInventory();
     }
-    public static void ShowStats(Player player, int index)
+    public static void ShowItem(Player player, int index)
     {
       Inventory inventory = player.Inventory;
-      inventory.ShowStats(index);
+      inventory.ShowItem(index);
     }
     public static void AddItem(Player player, Item item)
     {

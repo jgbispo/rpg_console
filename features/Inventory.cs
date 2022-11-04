@@ -2,17 +2,21 @@ namespace RPG
 {
   class Inventory
   {
+
+    private int maxItems;
     private List<Item> items;
-    public Inventory()
+    public Inventory(int maxItems)
     {
       items = new List<Item>();
+      this.maxItems = maxItems;
     }
 
     public void ShowInventory()
     {
       Console.Clear();
-      Console.WriteLine("Inventory");
-      if (items.Count < 1)
+      int filled = maxItems - items.Count;
+      Console.WriteLine($"Inventory {filled} / {maxItems}");
+      if (items.Count == 0)
       {
         Console.WriteLine("Inventory is empty");
       }
@@ -26,14 +30,21 @@ namespace RPG
       }
     }
 
-    public void ShowStats(int index)
+    public void ShowItem(int index)
     {
-      items[index].ShowStats();
+      items[index].ShowStatus();
     }
 
     public void AddItem(Item item)
     {
-      items.Add(item);
+      if (items.Count < maxItems)
+      {
+        items.Add(item);
+      }
+      else
+      {
+        Console.WriteLine("Inventory is full");
+      }
     }
 
     public void RemoveItem(int index)
