@@ -6,26 +6,22 @@ namespace RPG
     public static bool Battle(int dice, Player player, string attack, Enemy enemy, bool isBattle)
     {
       Console.Clear();
-      int damage = 0;
+      int damage = player.ValueItemEquip;
       if (attack == "sword")
       {
-        damage = player.Strength;
+        damage += player.Strength;
       }
       else if (attack == "magic")
       {
-        damage = player.Magic;
+        damage += player.Magic;
         player.Mana -= 10;
-      }
-      else
-      {
-        damage = (player.Strength + player.Magic) / 2;
       }
 
       if (dice == 20)
       {
         Console.WriteLine("You critical hit the enemy!");
         Console.WriteLine("You did " + damage * 2 + " damage!");
-        if (enemy.Damage(damage * 2))
+        if (enemy.Damage(damage  * 2))
         {
           player.Gold += enemy.DropGold();
           player.Experience += enemy.DropXP();
