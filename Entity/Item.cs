@@ -6,6 +6,7 @@ namespace RPG
     private int value;
     private string rarity;
     private string type;
+    private bool isEquipped;
 
     public Item(string name, int value, string rarity, string type)
     {
@@ -13,6 +14,7 @@ namespace RPG
       this.value = value;
       this.rarity = rarity;
       this.type = type;
+      this.isEquipped = false;
     }
 
     public void ShowStatus()
@@ -25,44 +27,35 @@ namespace RPG
       Console.ReadKey();
     }
 
-    public string GetName()
+    // Getters and Setters
+    public string Name
     {
-      return name;
+      get { return name; }
+      set { name = value; }
     }
 
-    public int GetValue()
+    public int Value
     {
-      return value;
+      get { return value; }
+      set { this.value = value; }
     }
 
-    public string GetRarity()
+    public string Rarity
     {
-      return rarity;
+      get { return rarity; }
+      set { rarity = value; }
     }
 
-    public string GetTypeItem()
+    public string Type
     {
-      return type;
+      get { return type; }
+      set { type = value; }
     }
 
-    public void SetName(string name)
+    public bool IsEquipped
     {
-      this.name = name;
-    }
-
-    public void SetValue(int value)
-    {
-      this.value = value;
-    }
-
-    public void SetRarity(string rarity)
-    {
-      this.rarity = rarity;
-    }
-
-    public void SetType(string type)
-    {
-      this.type = type;
+      get { return isEquipped; }
+      set { isEquipped = value; }
     }
   }
 }

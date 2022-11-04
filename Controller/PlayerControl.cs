@@ -13,7 +13,7 @@ namespace RPG
       Console.WriteLine("Class: " + player.ClassPlayer);
       Console.WriteLine("Level: " + player.Level);
       Console.WriteLine("Experience: " + player.Experience);
-      Console.WriteLine("Gold: " + player.Gold);  
+      Console.WriteLine("Gold: " + player.Gold);
       Console.WriteLine("Health: " + player.Health + "/" + player.MaxHealth);
       Console.WriteLine("Mana: " + player.Mana + "/" + player.MaxMana);
       Console.WriteLine("Strength: " + player.Strength);
@@ -49,6 +49,7 @@ namespace RPG
       player.Strength += 5;
       player.Magic += 5;
       player.MaxItem += 5;
+      player.Speed += 5;
       Console.Clear();
       Console.WriteLine("You leveled up!");
       Console.WriteLine("You are now level " + player.Level);
@@ -58,6 +59,18 @@ namespace RPG
       Console.WriteLine("Up Magic: " + player.Magic);
       Console.Write("Press any key to continue...");
       Console.ReadKey();
+    }
+
+    public static void Equip(Player player, Item item)
+    {
+      player.ValueItemEquip = item.Value;
+      item.IsEquipped = true;
+    }
+
+    public static void UnEquip(Player player, Item item)
+    {
+      player.ValueItemEquip -= item.Value;
+      item.IsEquipped = false;
     }
   }
 }

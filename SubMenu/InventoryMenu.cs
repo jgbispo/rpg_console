@@ -5,7 +5,6 @@ namespace RPG
     public static void ChooseOptionInventory(Player player)
     {
       int index;
-      Console.Clear();
       Console.Write("Choose an option: ");
       string option = Console.ReadLine()!;
       switch (option)
@@ -26,6 +25,12 @@ namespace RPG
             InventoryControl.RemoveItem(player, index);
             Console.WriteLine("Item dropped");
           }
+          ChooseOptionInventory(player);
+          break;
+        case "equip":
+          Console.Write("Choose an item: ");
+          index = Convert.ToInt32(Console.ReadLine()) - 1;
+          InventoryControl.EquipItem(player, index);
           ChooseOptionInventory(player);
           break;
         case "exit":
