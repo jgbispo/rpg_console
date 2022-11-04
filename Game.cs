@@ -34,6 +34,7 @@ namespace RPG
     private void End()
     {
       Console.WriteLine("Goodbye!");
+      return; 
     }
 
     private void MainMenu()
@@ -86,6 +87,11 @@ namespace RPG
       Console.WriteLine("exit - Exit the game");
       Console.Write("Press any key to continue...");
       Console.ReadKey();
+    }
+
+    public bool GameOver
+    {
+      set { _gameOver = value; }
     }
   }
 }
